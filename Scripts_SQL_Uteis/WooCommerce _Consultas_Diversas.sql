@@ -45,3 +45,15 @@ WHERE tax.taxonomy = 'product_cat'
 	AND tax.parent = 0
 	AND tax.count <> 0;
 /******************************************************************************************************************/
+
+/****************************** CONSULTA DE PRODUTOS COM PESO ZERADO ******************************/
+SELECT product.ID
+	,product.post_title
+FROM `cVlRFQ_posts` product
+INNER JOIN `cVlRFQ_postmeta` weight ON weight.meta_key = '_weight'
+	AND weight.post_id = product.ID
+INNER JOIN `cVlRFQ_wc_product_meta_lookup` stock ON stock.product_id = product.ID
+WHERE product.post_type = 'product'
+	AND weight.meta_value = '0.000'
+AND stock.stock_status = 'instock';
+/******************************************************************************************************************/
