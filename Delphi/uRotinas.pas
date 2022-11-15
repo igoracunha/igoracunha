@@ -2,15 +2,20 @@ unit uRotinas;
 
 interface
 
-uses Winapi.UrlMon;
+uses Winapi.UrlMon, System.SysUtils;
 
-procedure DownloadImageURL(url,path);
+procedure DownloadImageURL(url,path: string);
 
 implementation
 
-procedure DownloadImageURL(url,path);
+procedure DownloadImageURL(url,path: string);
+var
+  v_path: string;
 begin
-  URLDownloadToFile(nil,PWideChar(url),PWideChar(path),0,nil);
+  v_path:= ExtractFileDir(path);
+
+  if DirectoryExists(v_path) then
+    URLDownloadToFile(nil,PWideChar(url),PWideChar(path),0,nil);
 end;
 
 end.
