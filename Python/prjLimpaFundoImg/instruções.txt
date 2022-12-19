@@ -1,0 +1,3 @@
+Baixar os arquivos
+Colocá-los no diretório aonde estão as imagens a serem afetadas
+Rodar o executa.bat
